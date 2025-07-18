@@ -1,0 +1,19 @@
+name: GitSecure Secrets Detection
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  detect_secrets:
+    runs-on: ubuntu-latest
+    name: Detect exposed secrets
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+      - name: Run GitSecure
+        uses: bugbounty-site/GitSecure@master
+        with:
+          slack_hook: e1b3124d-9f5a-43c9-9123-b3c3fe6e85b7
